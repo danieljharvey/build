@@ -10,5 +10,13 @@ data Task = Task
     dependsOn :: [TaskKey]
   }
 
+-- take a container name, run it, returning port
+withDocker :: Text -> (Word16 -> IO b) -> IO b
+withDocker path useDocker =
+  bracket
+    (setupDocker path)
+    (\dockerId -> stopDocker dockerId)
+    (\dockerId -> useDocker dockerId)
+
 main :: IO ()
 main = putStrLn "dog"
