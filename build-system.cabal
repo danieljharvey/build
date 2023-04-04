@@ -56,14 +56,16 @@ common warnings
 
 library
   build-depends: base
+    , command
+    , free
     , text
 
   default-langauge: GHC2021
   hs-source-dirs: src
   exposed-modules:
-    Main
+    Library
 
-executable build-system
+executable build-system-exe
     -- Import common warning flags.
     import:           warnings
 
@@ -77,7 +79,8 @@ executable build-system
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.17.0.0
+    build-depends:    base ^>=4.17.0.0,
+      build-system
 
     -- Directories containing source files.
     hs-source-dirs:   app

@@ -1,4 +1,4 @@
-module Main where
+import Library qualified as Lib
 
 main :: IO ()
-main = putStrLn "Hello, Haskell!"
+main = Lib.main
